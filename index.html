@@ -2,120 +2,134 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Eid Intro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak</title>
 
 <style>
 body {
     margin: 0;
     height: 100vh;
-    background: radial-gradient(circle at center, #0a1d4d, #020a1f);
+    overflow: hidden;
+    background: #043562;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
+    font-family: sans-serif;
 }
 
-/* Estrellas */
-body::before {
+/* ✨ estrellas (varias capas para realismo) */
+body::before,
+body::after {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 200%;
+    background-repeat: repeat;
+    animation: moveStars 60s linear infinite;
+}
+
+body::before {
     background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.15;
-    animation: stars 5s linear infinite;
+    background-size: 40px 40px;
+    opacity: 0.4;
 }
 
-@keyframes stars {
-    from {transform: translateY(0);}
-    to {transform: translateY(50px);}
+body::after {
+    background-image: radial-gradient(white 2px, transparent 2px);
+    background-size: 80px 80px;
+    opacity: 0.2;
+    animation-duration: 120s;
 }
 
-/* Faroles */
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-200px); }
+}
+
+/* 🏮 faroles */
 .lantern {
     position: absolute;
-    top: -50px;
-    width: 40px;
-    height: 60px;
-    background: gold;
-    border-radius: 10px;
-    box-shadow: 0 0 20px gold;
-    animation: swing 3s ease-in-out infinite;
+    top: -20px;
+    width: 70px;
+    transform-origin: top center;
+    animation: swing 4s ease-in-out infinite;
 }
 
-.lantern::after {
-    content: "";
-    position: absolute;
-    width: 4px;
-    height: 80px;
-    background: gold;
-    top: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* posiciones */
-.l1 { left: 20%; animation-delay: 0s; }
-.l2 { left: 50%; animation-delay: 1s; }
-.l3 { left: 80%; animation-delay: 2s; }
+/* posiciones tipo imagen */
+.l1 { left: 15%; width: 80px; animation-delay: 0s; }
+.l2 { left: 35%; width: 60px; animation-delay: 1s; }
+.l3 { left: 55%; width: 75px; animation-delay: 2s; }
+.l4 { left: 75%; width: 65px; animation-delay: 1.5s; }
 
 @keyframes swing {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
+    0%,100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
 }
 
-/* Marco */
-.card {
-    padding: 80px 120px;
-    border: 2px solid gold;
-    border-radius: 40%;
-    text-align: center;
-    backdrop-filter: blur(5px);
+/* 🕌 marco */
+.frame {
+    position: relative;
+    width: 85vw;
+    max-width: 400px;
     animation: fadeIn 2s ease;
 }
 
-/* Luna */
+/* 🌙 luna */
 .moon {
-    font-size: 45px;
-    color: gold;
-    margin-bottom: 20px;
-    animation: float 3s infinite ease-in-out;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    animation: float 3s ease-in-out infinite;
 }
 
-/* Texto */
-h1 {
+/* texto */
+.text {
+    position: absolute;
+    top: 58%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.text h1 {
     font-weight: 300;
-    letter-spacing: 4px;
-    font-size: 42px;
+    font-size: 26px;
 }
 
-/* Animaciones */
+/* animaciones */
 @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.7); }
+    from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    0%,100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, -10px); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Faroles -->
-<div class="lantern l1"></div>
-<div class="lantern l2"></div>
-<div class="lantern l3"></div>
+<!-- 🏮 faroles -->
+<img src="farol.png" class="lantern l1">
+<img src="farol.png" class="lantern l2">
+<img src="farol.png" class="lantern l3">
+<img src="farol.png" class="lantern l4">
 
-<!-- Contenido -->
-<div class="card">
-    <div class="moon">🌙</div>
-    <h1>EID<br>MUBARAK</h1>
+<!-- 🕌 contenido -->
+<div class="frame">
+    <img src="marco.png" width="100%">
+    
+    <img src="luna.png" class="moon">
+
+    <div class="text">
+        <h1>EID<br>MUBARAK</h1>
+    </div>
 </div>
 
 </body>
