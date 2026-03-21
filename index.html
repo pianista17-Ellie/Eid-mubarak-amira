@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Eid Intro</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a1d4d, #020a1f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+/* Estrellas */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.15;
+    animation: stars 5s linear infinite;
+}
+
+@keyframes stars {
+    from {transform: translateY(0);}
+    to {transform: translateY(50px);}
+}
+
+/* Faroles */
+.lantern {
+    position: absolute;
+    top: -50px;
+    width: 40px;
+    height: 60px;
+    background: gold;
+    border-radius: 10px;
+    box-shadow: 0 0 20px gold;
+    animation: swing 3s ease-in-out infinite;
+}
+
+.lantern::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 80px;
+    background: gold;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* posiciones */
+.l1 { left: 20%; animation-delay: 0s; }
+.l2 { left: 50%; animation-delay: 1s; }
+.l3 { left: 80%; animation-delay: 2s; }
+
+@keyframes swing {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+/* Marco */
+.card {
+    padding: 80px 120px;
+    border: 2px solid gold;
+    border-radius: 40%;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 2s ease;
+}
+
+/* Luna */
+.moon {
+    font-size: 45px;
+    color: gold;
+    margin-bottom: 20px;
+    animation: float 3s infinite ease-in-out;
+}
+
+/* Texto */
+h1 {
+    font-weight: 300;
+    letter-spacing: 4px;
+    font-size: 42px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Faroles -->
+<div class="lantern l1"></div>
+<div class="lantern l2"></div>
+<div class="lantern l3"></div>
+
+<!-- Contenido -->
+<div class="card">
+    <div class="moon">🌙</div>
+    <h1>EID<br>MUBARAK</h1>
+</div>
+
+</body>
+</html>
