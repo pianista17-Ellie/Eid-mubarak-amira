@@ -17,7 +17,7 @@ body {
     font-family: sans-serif;
 }
 
-/* ✨ estrellas (varias capas para realismo) */
+/* ✨ estrellas cayendo */
 body::before,
 body::after {
     content: "";
@@ -25,41 +25,39 @@ body::after {
     width: 200%;
     height: 200%;
     background-repeat: repeat;
-    animation: moveStars 60s linear infinite;
 }
 
 body::before {
     background-image: radial-gradient(white 1px, transparent 1px);
-    background-size: 40px 40px;
-    opacity: 0.4;
+    background-size: 30px 30px;
+    opacity: 0.5;
+    animation: starsFall 20s linear infinite;
 }
 
 body::after {
     background-image: radial-gradient(white 2px, transparent 2px);
-    background-size: 80px 80px;
-    opacity: 0.2;
-    animation-duration: 120s;
+    background-size: 70px 70px;
+    opacity: 0.3;
+    animation: starsFall 40s linear infinite;
 }
 
-@keyframes moveStars {
-    from { transform: translateY(0); }
-    to { transform: translateY(-200px); }
+@keyframes starsFall {
+    from { transform: translateY(-100px); }
+    to { transform: translateY(200px); }
 }
 
 /* 🏮 faroles */
 .lantern {
     position: absolute;
     top: -20px;
-    width: 70px;
     transform-origin: top center;
     animation: swing 4s ease-in-out infinite;
 }
 
-/* posiciones tipo imagen */
 .l1 { left: 15%; width: 80px; animation-delay: 0s; }
 .l2 { left: 35%; width: 60px; animation-delay: 1s; }
-.l3 { left: 55%; width: 75px; animation-delay: 2s; }
-.l4 { left: 75%; width: 65px; animation-delay: 1.5s; }
+.l3 { left: 60%; width: 75px; animation-delay: 2s; }
+.l4 { left: 80%; width: 65px; animation-delay: 1.5s; }
 
 @keyframes swing {
     0%,100% { transform: rotate(-6deg); }
@@ -70,34 +68,35 @@ body::after {
 .frame {
     position: relative;
     width: 85vw;
-    max-width: 400px;
+    max-width: 380px;
     animation: fadeIn 2s ease;
 }
 
 /* 🌙 luna */
 .moon {
     position: absolute;
-    top: 28%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 55px;
     animation: float 3s ease-in-out infinite;
 }
 
-/* texto */
+/* texto centrado */
 .text {
     position: absolute;
-    top: 58%;
+    top: 60%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     color: white;
-    letter-spacing: 3px;
+    width: 90%;
 }
 
 .text h1 {
     font-weight: 300;
-    font-size: 26px;
+    font-size: 20px;
+    letter-spacing: 2px;
 }
 
 /* animaciones */
@@ -109,6 +108,18 @@ body::after {
 @keyframes float {
     0%,100% { transform: translate(-50%, 0); }
     50% { transform: translate(-50%, -10px); }
+}
+
+/* 🎵 botón música */
+.music-btn {
+    position: absolute;
+    bottom: 20px;
+    background: white;
+    color: #043562;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
 }
 </style>
 </head>
@@ -128,9 +139,19 @@ body::after {
     <img src="luna.png" class="moon">
 
     <div class="text">
-        <h1>EID<br>MUBARAK</h1>
+        <h1>EID MUBARAK AMIRA</h1>
     </div>
 </div>
+
+<!-- 🎵 música -->
+<audio id="music" src="musica.mp3"></audio>
+<button class="music-btn" onclick="playMusic()">🎵 Tap para música</button>
+
+<script>
+function playMusic() {
+    document.getElementById("music").play();
+}
+</script>
 
 </body>
 </html>
